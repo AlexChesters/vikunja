@@ -1,0 +1,5 @@
+# tmp docker-compose.yml generated during deployment
+src/usr/lib/vikunja/docker-compose.tmp.yml
+
+# compiled docker-compose.yml with secrets
+src/usr/lib/vikunja/docker-compose.yml
