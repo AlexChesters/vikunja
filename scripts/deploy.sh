@@ -17,8 +17,10 @@ sed \
   > src/usr/lib/vikunja/docker-compose.yml
 
 scp -r src/usr/lib/vikunja/docker-compose.yml apps:/tmp/docker-compose.yml
+scp -r src/usr/lib/vikunja/vikunja.conf apps:/tmp/vikunja.conf
 
 # install vikunja
 ssh apps "sudo docker compose -f /usr/lib/vikunja/docker-compose.yml stop"
 ssh apps "sudo mv /tmp/docker-compose.yml /usr/lib/vikunja"
+ssh apps "sudo mv /tmp/vikunja.conf /usr/lib/vikunja"
 ssh apps "sudo docker compose -f /usr/lib/vikunja/docker-compose.yml up -d"
