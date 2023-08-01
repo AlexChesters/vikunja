@@ -17,7 +17,7 @@ services:
       VIKUNJA_DATABASE_TYPE: mysql
       VIKUNJA_DATABASE_USER: vikunja
       VIKUNJA_DATABASE_DATABASE: vikunja
-      VIKUNJA_SERVICE_FRONTENDURL: https://<your public frontend url with slash>/
+      VIKUNJA_SERVICE_FRONTENDURL: https://100.77.97.141:7000/
     volumes:
       - ./files:/app/vikunja/files
     depends_on:
