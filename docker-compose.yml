@@ -7,6 +7,8 @@ services:
     environment:
       MYSQL_USER: vikunja
       MYSQL_DATABASE: vikunja
+    - env_file:
+      - stack.env
     volumes:
       - ./db:/var/lib/mysql
     restart: unless-stopped
@@ -18,6 +20,8 @@ services:
       VIKUNJA_DATABASE_USER: vikunja
       VIKUNJA_DATABASE_DATABASE: vikunja
       VIKUNJA_SERVICE_FRONTENDURL: http://100.77.97.141/
+    - env_file:
+      - stack.env
     ports:
       - 3456:3456
     volumes:
