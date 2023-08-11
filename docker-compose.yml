@@ -21,7 +21,7 @@ services:
       VIKUNJA_DATABASE_USER: vikunja
       VIKUNJA_DATABASE_DATABASE: vikunja
       VIKUNJA_SERVICE_JWTSECRET: <a super secure random secret>
-      VIKUNJA_SERVICE_FRONTENDURL: http://100.77.97.141/
+      VIKUNJA_SERVICE_FRONTENDURL: http://100.77.97.141:7000/
     ports:
       - 3456:3456
     volumes:
@@ -32,7 +32,7 @@ services:
   frontend:
     image: vikunja/frontend
     ports:
-      - 80:80
+      - 7000:80
     environment:
       VIKUNJA_API_URL: http://100.77.97.141:3456/api/v1
     restart: unless-stopped
