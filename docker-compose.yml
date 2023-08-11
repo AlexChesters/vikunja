@@ -12,6 +12,8 @@ services:
     volumes:
       - ./db:/var/lib/mysql
     restart: unless-stopped
+    ports:
+      - 3306:3306
   api:
     image: vikunja/api
     environment:
