@@ -22,7 +22,7 @@ log "[INFO] - starting vikunja backup"
 mysqldump -u root --password=$DB_ROOT_PASSWORD --protocol=tcp -h localhost vikunja > /tmp/vikunja-backup.sql
 
 # backup files
-zip -r -9 /tmp/files.zip /data/compose/28/files
+zip -r -9 /tmp/files.zip /mnt/ssd-1/docker/volumes/vikunja_files/_data
 
 # create one backup artifact
 zip -r -9 /tmp/vikunja.zip /tmp/files.zip /tmp/vikunja-backup.sql
