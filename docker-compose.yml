@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DATABASE: vikunja
     volumes:
-      - ./db:/var/lib/mysql
+      - database:/var/lib/mysql
     restart: unless-stopped
     ports:
       - 3306:3306
@@ -38,3 +38,6 @@ services:
     environment:
       VIKUNJA_API_URL: https://pi-apps.chicken-stork.ts.net:10010/api/v1
     restart: unless-stopped
+
+volumes:
+  database:
