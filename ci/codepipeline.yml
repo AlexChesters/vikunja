@@ -5,10 +5,10 @@ Resources:
     Properties:
       ArtifactStore:
         Type: S3
-        Location: !ImportValue ci-infrastructure-build-artifacts-bucket-name
+        Location: !ImportValue ci-infrastructure-artifacts-bucket-name
       Name: vikunja-backups
       RestartExecutionOnUpdate: true
-      RoleArn: !ImportValue ci-infrastructure-codepipeline-base-execution-role
+      RoleArn: !ImportValue ci-infrastructure-codepipeline-base-execution-iam-role
       Stages:
         - Name: Source
           Actions:
@@ -23,7 +23,7 @@ Resources:
               Name: Clone-From-GitHub
               Namespace: SourceVariables
               Configuration:
-                ConnectionArn: !ImportValue ci-infrastructure-codestar-connection
+                ConnectionArn: !ImportValue ci-infrastructure-github-codestar-connection
                 FullRepositoryId: AlexChesters/vikunja
                 BranchName: main
                 OutputArtifactFormat: CODE_ZIP
@@ -42,6 +42,6 @@ Resources:
                 ActionMode: REPLACE_ON_FAILURE
                 Capabilities: CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND
                 StackName: vikunja-backups-main
-                RoleArn: !ImportValue ci-infrastructure-codepipeline-base-cloudformation-role
+                RoleArn: !ImportValue ci-infrastructure-codepipeline-base-cloudformation-iam-role
                 TemplatePath: GitHubSource::stacks/backups-account/main.yml
                 TemplateConfiguration: GitHubSource::stacks/backups-account/parameters/main.json
