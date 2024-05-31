@@ -74,6 +74,6 @@ Resources:
       Threshold: 1
       ActionsEnabled: true
       AlarmActions:
-        - !ImportValue notification-topic
+        - !ImportValue notification-topic-arn
       OKActions:
-        - !ImportValue notification-topic
+        - !ImportValue notification-topic-arn
