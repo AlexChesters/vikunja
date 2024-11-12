@@ -31,7 +31,7 @@ services:
       VIKUNJA_MAILER_PASSWORD: $VIKUNJA_MAILER_PASSWORD
       VIKUNJA_MAILER_FROMEMAIL: vikunja@notifications.alexchesters.com
       VIKUNJA_LOG_MAIL: stdout
-      VIKUNJA_LOG_MAILLEVEL: DEBUG
+      VIKUNJA_LOG_MAILLEVEL: INFO
     ports:
       - 3456:3456
     volumes:
