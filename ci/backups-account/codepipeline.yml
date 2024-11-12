@@ -1,4 +1,9 @@
 Description: pipeline to deploy vikunja backups
+Parameters:
+  Branch:
+    Type: String
+    Default: main
+    Description: The branch to deploy from
 Resources:
   CodePipeline:
     Type: AWS::CodePipeline::Pipeline
@@ -10,6 +15,17 @@ Resources:
       RestartExecutionOnUpdate: true
       RoleArn: !ImportValue ci-infrastructure-codepipeline-base-execution-iam-role
       PipelineType: V2
+      Triggers:
+        - ProviderType: CodeStarSourceConnection
+          GitConfiguration:
+            SourceActionName: Clone-From-GitHub
+            Push:
+              - Branches:
+                  Includes:
+                    - !Ref Branch
+                FilePaths:
+                  Excludes:
+                    - ci/**
       Stages:
         - Name: Source
           Actions:
@@ -26,7 +42,7 @@ Resources:
               Configuration:
                 ConnectionArn: !ImportValue ci-infrastructure-github-codestar-connection
                 FullRepositoryId: AlexChesters/vikunja
-                BranchName: main
+                BranchName: !Ref Branch
                 OutputArtifactFormat: CODE_ZIP
         - Name: Deploy-Stacks
           Actions:
