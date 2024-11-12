@@ -24,6 +24,12 @@ services:
       VIKUNJA_DATABASE_DATABASE: vikunja
       VIKUNJA_SERVICE_JWTSECRET: $VIKUNJA_SERVICE_JWTSECRET
       VIKUNJA_SERVICE_PUBLICURL: https://pi-apps.chicken-stork.ts.net:10011/
+      VIKUNJA_MAILER_ENABLED: true
+      VIKUNJA_MAILER_HOST: email-smtp.eu-west-1.amazonaws.com
+      VIKUNJA_MAILER_PORT: 587
+      VIKUNJA_MAILER_USERNAME: $VIKUNJA_MAILER_USERNAME
+      VIKUNJA_MAILER_PASSWORD: $VIKUNJA_MAILER_PASSWORD
+      VIKUNJA_MAILER_FROMEMAIL: vikunja@notifications.alexchesters.com
     ports:
       - 3456:3456
     volumes:
