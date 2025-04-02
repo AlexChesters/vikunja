@@ -48,7 +48,7 @@ Resources:
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
-      Serial: 4 # increment this value to force the access key to be recycled
+      Serial: 5 # increment this value to force the access key to be recycled
       Status: Active
       UserName: !Ref User
   CredentialsSecret:
